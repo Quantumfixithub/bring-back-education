@@ -1,0 +1,673 @@
+<!-- ============================================ -->
+<!-- PRIZES PAGE (prizes.html) -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prizes - Bringing Back Education 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(102, 126, 234, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #FFD700;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            margin-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .breadcrumb {
+            margin-top: 20px;
+            font-size: 0.9em;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .breadcrumb a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Main Prizes Section */
+        .main-prizes {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .main-prizes h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .main-prizes .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 60px;
+        }
+
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .prize-card {
+            background: white;
+            padding: 50px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .prize-card:hover {
+            transform: translateY(-15px);
+        }
+
+        .prize-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+        }
+
+        .prize-card.first::before { 
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+        }
+        .prize-card.second::before { 
+            background: linear-gradient(90deg, #C0C0C0, #A8A8A8);
+        }
+        .prize-card.third::before { 
+            background: linear-gradient(90deg, #CD7F32, #B8860B);
+        }
+
+        .medal {
+            font-size: 5em;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .prize-position {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .prize-amount {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .prize-amount.first { color: #FFD700; }
+        .prize-amount.second { color: #C0C0C0; }
+        .prize-amount.third { color: #CD7F32; }
+
+        .prize-extras {
+            font-size: 1.2em;
+            color: #666;
+            margin: 20px 0;
+        }
+
+        .prize-benefits {
+            text-align: left;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 2px dashed #e0e0e0;
+        }
+
+        .prize-benefits h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .prize-benefits ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .prize-benefits li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .prize-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Category Prizes */
+        .category-prizes {
+            padding: 80px 20px;
+        }
+
+        .category-prizes h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 60px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        .category-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .category-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .category-card .prize-info {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .category-card .prize-info p {
+            font-size: 1.1em;
+            margin: 5px 0;
+        }
+
+        /* Special Awards */
+        .special-awards {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .special-awards h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 60px;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .award-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .award-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .award-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .award-card p {
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+            font-size: 1.1em;
+        }
+
+        .btn-primary {
+            background: #FFD700;
+            color: #333;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(102, 126, 234, 0.98);
+                padding: 20px;
+                gap: 15px;
+            }
+
+            nav ul.active {
+
+
+
+
+
+
+
+
+
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .prize-amount {
+                font-size: 2.5em;
+            }
+
+            .prizes-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🎓 BBE 2026</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="prizes.html" class="active">Prizes</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="sponsors.html">Sponsors</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Prizes & Awards</h1>
+        <p>Celebrating Excellence and Achievement</p>
+   </section>
+
+    <!-- Main Prizes Section -->
+    <section class="main-prizes">
+        <div class="container">
+            <h2>Grand Prize Winners</h2>
+            <p class="subtitle">Top 3 overall champions receive amazing prizes and recognition!</p>
+
+            <div class="prizes-grid">
+                <!-- First Place -->
+                <div class="prize-card first">
+                    <div class="medal">🥇</div>
+                    <div class="prize-position">First Place</div>
+                    <div class="prize-amount first">₦15,000</div>
+                    <div class="prize-extras">+ Premium Notebooks & Stationery Set</div>
+                    
+                    <div class="prize-benefits">
+                        <h4>Additional Benefits</h4>
+                        <ul>
+                            <li>Championship Trophy</li>
+                            <li>Certificate of Excellence</li>
+                            <li>Featured in Media Coverage</li>
+                            <li>Scholarship Recommendation Letter</li>
+                            <li>One-Year Mentorship Program</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Second Place -->
+                <div class="prize-card second">
+                    <div class="medal">🥈</div>
+                    <div class="prize-position">Second Place</div>
+                    <div class="prize-amount second">₦10,000</div>
+                    <div class="prize-extras">+ Premium Notebooks & Stationery Set</div>
+                    
+                    <div class="prize-benefits">
+                        <h4>Additional Benefits</h4>
+                        <ul>
+                            <li>Silver Trophy</li>
+                            <li>Certificate of Achievement</li>
+                            <li>Featured in Event Highlights</li>
+                            <li>Educational Resources Pack</li>
+                            <li>Six-Month Mentorship Program</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Third Place -->
+                <div class="prize-card third">
+                    <div class="medal">🥉</div>
+                    <div class="prize-position">Third Place</div>
+                    <div class="prize-amount third">₦5,000</div>
+                    <div class="prize-extras">+ Premium Notebooks & Stationery Set</div>
+                    
+                    <div class="prize-benefits">
+                        <h4>Additional Benefits</h4>
+                        <ul>
+                            <li>Bronze Trophy</li>
+                            <li>Certificate of Merit</li>
+                            <li>Recognition on Social Media</li>
+                            <li>Educational Books Collection</li>
+                            <li>Three-Month Mentorship Program</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Prizes -->
+    <section class="category-prizes">
+        <div class="container">
+            <h2>Category Champions</h2>
+            
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">📚</div>
+                    <h3>Academic Quiz Champion</h3>
+                    <p>Best performance across all academic subjects</p>
+                    <div class="prize-info">
+                        <p><strong>Prize: ₦3,000</strong></p>
+                        <p>+ Certificate & Medal</p>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">✍️</div>
+                    <h3>Spelling Bee Champion</h3>
+                    <p>Outstanding vocabulary and spelling mastery</p>
+                    <div class="prize-info">
+                        <p><strong>Prize: ₦3,000</strong></p>
+                        <p>+ Certificate & Medal</p>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">🧠</div>
+                    <h3>Reasoning Challenge Winner</h3>
+                    <p>Exceptional problem-solving abilities</p>
+                    <div class="prize-info">
+                        <p><strong>Prize: ₦3,000</strong></p>
+                        <p>+ Certificate & Medal</p>
+                    </div>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h3>Tech Innovation Award</h3>
+                    <p>Creative thinking and tech knowledge</p>
+                    <div class="prize-info">
+                        <p><strong>Prize: ₦3,000</strong></p>
+                        <p>+ Certificate & Medal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Awards -->
+    <section class="special-awards">
+        <div class="container">
+            <h2>Special Recognition Awards</h2>
+            
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">⭐</div>
+                    <h3>Most Improved Student</h3>
+                    <p>Recognizing exceptional progress and dedication to learning</p>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">🎖️</div>
+                    <h3>Best Team Spirit</h3>
+                    <p>For outstanding collaboration and sportsmanship</p>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">🌟</div>
+                    <h3>Rising Star Award</h3>
+                    <p>For younger participants showing great potential</p>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">🏆</div>
+                    <h3>Persistence Award</h3>
+                    <p>For determination and never giving up attitude</p>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">💎</div>
+                    <h3>Excellence in Multiple Categories</h3>
+                    <p>For outstanding performance across different competitions</p>
+                </div>
+
+                <div class="award-card">
+                    <div class="award-icon">🎯</div>
+                    <h3>Perfect Score Award</h3>
+                    <p>For achieving 100% in any category</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Compete for These Prizes?</h2>
+            <p>Register now and showcase your talents!</p>
+            <a href="register.html" class="btn btn-primary">Register Now</a>
+            <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Bringing Back Education. All rights reserved.</p>
+            <p>Inspiring Young Minds | Building Future Leaders</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

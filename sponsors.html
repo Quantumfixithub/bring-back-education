@@ -1,0 +1,681 @@
+<!-- ============================================ -->
+<!-- SPONSORS PAGE (sponsors.html) -->
+<!-- ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors - Bringing Back Education 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(102, 126, 234, 0.95);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #FFD700;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px 80px;
+            margin-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.3em;
+        }
+
+        .breadcrumb {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Why Sponsor Section */
+        .why-sponsor {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .why-sponsor h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 60px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Sponsorship Packages */
+        .packages-section {
+            padding: 80px 20px;
+        }
+
+        .packages-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 60px;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+
+        .package-card:hover {
+            transform: scale(1.05);
+        }
+
+        .package-header {
+            padding: 40px 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .package-card.platinum .package-header {
+            background: linear-gradient(135deg, #E5E4E2, #BCC6CC);
+        }
+
+        .package-card.gold .package-header {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+
+        .package-card.silver .package-header {
+            background: linear-gradient(135deg, #C0C0C0, #A8A8A8);
+        }
+
+        .package-card.bronze .package-header {
+            background: linear-gradient(135deg, #CD7F32, #B8860B);
+        }
+
+        .package-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .package-name {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .package-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .package-body {
+            padding: 40px 30px;
+        }
+
+        .package-body ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .package-body li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #666;
+        }
+
+        .package-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .package-btn {
+            display: block;
+            margin-top: 30px;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .package-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Current Sponsors */
+        .current-sponsors {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .current-sponsors h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #667eea;
+            margin-bottom: 60px;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .sponsor-logo {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #667eea;
+            min-height: 150px;
+            transition: transform 0.3s;
+        }
+
+        .sponsor-logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* Contact CTA */
+        .sponsor-cta {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .sponsor-cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .sponsor-cta p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
+        }
+
+        .contact-info-box {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-info-box h3 {
+            margin-bottom: 30px;
+            font-size: 1.8em;
+        }
+
+        .contact-info-box p {
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+
+        .contact-info-box a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info-box a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            margin: 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+            font-size: 1.1em;
+        }
+
+        .btn-primary {
+            background: #FFD700;
+            color: #333;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(102, 126, 234, 0.98);
+                padding: 20px;
+                gap: 15px;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .packages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">🎓 BBE 2026</a>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="prizes.html">Prizes</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="sponsors.html" class="active">Sponsors</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Partner With Us</h1>
+        <p>Help Shape the Future of Education in Nigeria</p>
+    </section>
+
+    <!-- Why Sponsor Section -->
+    <section class="why-sponsor">
+        <div class="container">
+            <h2>Why Sponsor This Event?</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Brand Visibility</h3>
+                    <p>Reach thousands of students, parents, educators, and community members through event marketing and media coverage.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🤝</div>
+                    <h3>Community Impact</h3>
+                    <p>Make a meaningful difference in education and demonstrate your commitment to youth development.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Social Media Exposure</h3>
+                    <p>Featured prominently across all our social media platforms with dedicated sponsor recognition posts.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📰</div>
+                    <h3>Media Coverage</h3>
+                    <p>Recognition in press releases, news coverage, and promotional materials distributed widely.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎤</div>
+                    <h3>Speaking Opportunity</h3>
+                    <p>Address attendees at the event and share your organization's vision and values.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏆</div>
+                    <h3>Corporate Recognition</h3>
+                    <p>Receive certificates of appreciation and partnership, showcasing your corporate social responsibility.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌟</div>
+                    <h3>Employee Engagement</h3>
+                    <p>Boost employee morale by supporting meaningful educational initiatives in the community.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h3>Networking</h3>
+                    <p>Connect with other sponsors, educators, and community leaders at exclusive sponsor events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Packages -->
+    <section class="packages-section">
+        <div class="container">
+            <h2>Sponsorship Packages</h2>
+            
+            <div class="packages-grid">
+                <!-- Platinum Package -->
+                <div class="package-card platinum">
+                    <div class="package-header">
+                        <div class="package-icon">💎</div>
+                        <div class="package-name">Platinum</div>
+                        <div class="package-amount">₦500,000+</div>
+                    </div>
+                    <div class="package-body">
+                        <ul>
+                            <li>Exclusive title sponsor status</li>
+                            <li>Large logo on all materials</li>
+                            <li>10-minute keynote speech</li>
+                            <li>VIP seating for 10 guests</li>
+                            <li>Full-page ad in program</li>
+                            <li>Social media campaign (10 posts)</li>
+                            <li>Press release feature</li>
+                            <li>Banner at main venue</li>
+                            <li>Website homepage placement</li>
+                            <li>Exclusive sponsor dinner</li>
+                        </ul>
+                        <a href="contact.html" class="package-btn">Become a Platinum Sponsor</a>
+                    </div>
+                </div>
+
+                <!-- Gold Package -->
+                <div class="package-card gold">
+                    <div class="package-header">
+                        <div class="package-icon">🥇</div>
+                        <div class="package-name">Gold</div>
+                        <div class="package-amount">₦300,000</div>
+                    </div>
+                    <div class="package-body">
+                        <ul>
+                            <li>Premier sponsor recognition</li>
+                            <li>Logo on all materials</li>
+                            <li>5-minute welcome speech</li>
+                            <li>VIP seating for 6 guests</li>
+                            <li>Half-page ad in program</li>
+                            <li>Social media mentions (6 posts)</li>
+                            <li>Press release mention</li>
+                            <li>Banner at venue</li>
+                            <li>Website sponsor page feature</li>
+                        </ul>
+                        <a href="contact.html" class="package-btn">Become a Gold Sponsor</a>
+                    </div>
+                </div>
+
+                <!-- Silver Package -->
+                <div class="package-card silver">
+                    <div class="package-header">
+                        <div class="package-icon">🥈</div>
+                        <div class="package-name">Silver</div>
+                        <div class="package-amount">₦150,000</div>
+                    </div>
+                    <div class="package-body">
+                        <ul>
+                            <li>Major sponsor recognition</li>
+                            <li>Logo on select materials</li>
+                            <li>VIP seating for 4 guests</li>
+                            <li>Quarter-page ad in program</li>
+                            <li>Social media mentions (4 posts)</li>
+                            <li>Website listing</li>
+                            <li>Certificate of appreciation</li>
+                            <li>Event photo opportunities</li>
+                        </ul>
+                        <a href="contact.html" class="package-btn">Become a Silver Sponsor</a>
+                    </div>
+                </div>
+
+                <!-- Bronze Package -->
+                <div class="package-card bronze">
+                    <div class="package-header">
+                        <div class="package-icon">🥉</div>
+                        <div class="package-name">Bronze</div>
+                        <div class="package-amount">₦75,000</div>
+                    </div>
+                    <div class="package-body">
+                        <ul>
+                            <li>Sponsor recognition</li>
+                            <li>Logo in program booklet</li>
+                            <li>Reserved seating for 2 guests</li>
+                            <li>Social media mention (2 posts)</li>
+                            <li>Website listing</li>
+                            <li>Certificate of appreciation</li>
+                        </ul>
+                        <a href="contact.html" class="package-btn">Become a Bronze Sponsor</a>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 15px;">
+                <h3 style="color: #667eea; margin-bottom: 15px;">Custom Sponsorship Packages Available</h3>
+                <p style="color: #666; font-size: 1.1em;">
+                    We can create a customized sponsorship package tailored to your organization's goals and budget. 
+                    Contact us to discuss your specific needs and objectives.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Sponsors -->
+    <section class="current-sponsors">
+        <div class="container">
+            <h2>Our Valued Partners</h2>
+            
+            <div class="sponsors-grid">
+                <div class="sponsor-logo">
+                    <span>Your Logo Here</span>
+                </div>
+                <div class="sponsor-logo">
+                    <span>Your Logo Here</span>
+                </div>
+                <div class="sponsor-logo">
+                    <span>Your Logo Here</span>
+                </div>
+                <div class="sponsor-logo">
+                    <span>Your Logo Here</span>
+                </div>
+                <div class="sponsor-logo">
+                    <span>Your Logo Here</span>
+                </div>
+                <div class="sponsor-logo">
+                    <span>Your Logo Here</span>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="font-size: 1.2em; color: #666;">
+                    Join these forward-thinking organizations in making a difference!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="sponsor-cta">
+        <div class="container">
+            <h2>Ready to Make an Impact?</h2>
+            <p>Let's discuss how we can partner to inspire the next generation</p>
+            
+            <div class="contact-info-box">
+                <h3>Get in Touch</h3>
+                <p>📞 Phone: <a href="tel:+2349053044837">+234 905 304 4837</a></p>
+                <p>📧 Email: <a href="mailto:sponsors@bringingbackeducation.org">sponsors@bringingbackeducation.org</a></p>
+                <p>📍 Location: Okene, Kogi State, Nigeria</p>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="contact.html" class="btn btn-primary">Contact Us Now</a>
+                <a href="about.html" class="btn btn-secondary">Learn More About Us</a>
+            </div>
+        </div>
+    </section>
+
+   <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Bringing Back Education. All rights reserved.</p>
+            <p>Inspiring Young Minds | Building Future Leaders</p>
+            
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
