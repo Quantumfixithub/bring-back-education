@@ -391,35 +391,76 @@
         }
 
         /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(102, 126, 234, 0.98);
-                padding: 20px;
-                gap: 15px;
-            }
+        /* Mobile Responsive */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(102, 126, 234, 0.98);
+        padding: 20px;
+        gap: 15px;
+    }
 
-            nav ul.active {
-                display: flex;
-            }
+    nav ul.active {
+        display: flex;
+    }
 
-            .mobile-menu-btn {
-                display: block;
-            }
+    .mobile-menu-btn {
+        display: block;
+    }
 
-            .page-header h1 {
-                font-size: 2em;
-            }
+    .page-header h1 {
+        font-size: 2em;
+    }
 
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .page-header p {
+        font-size: 1.1em;
+    }
+
+    .why-sponsor h2,
+    .packages-section h2,
+    .current-sponsors h2,
+    .sponsor-cta h2 {
+        font-size: 1.8em;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-card {
+        padding: 30px 20px;
+    }
+
+    .packages-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .package-card {
+        margin-bottom: 20px;
+    }
+
+    .sponsors-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .contact-info-box {
+        padding: 30px 20px;
+    }
+
+    .sponsor-cta p {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        display: block;
+        margin: 10px 0;
+    }
+}
     </style>
 </head>
 <body>
