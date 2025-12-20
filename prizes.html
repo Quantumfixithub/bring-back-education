@@ -416,48 +416,40 @@
             }
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(102, 126, 234, 0.98);
-                padding: 20px;
-                gap: 15px;
-            }
+    @media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(102, 126, 234, 0.98);
+        padding: 20px;
+        gap: 15px;
+    }
 
-            nav ul.active {
+    nav ul.active {
+        display: flex;
+    }
 
+    .mobile-menu-btn {
+        display: block;
+    }
 
+    .page-header h1 {
+        font-size: 2em;
+    }
 
+    .prize-amount {
+        font-size: 2.5em;
+    }
 
+    .prizes-grid {
+        grid-template-columns: 1fr;
+    }
+}   
 
-
-
-
-
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .page-header h1 {
-                font-size: 2em;
-            }
-
-            .prize-amount {
-                font-size: 2.5em;
-            }
-
-            .prizes-grid {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
